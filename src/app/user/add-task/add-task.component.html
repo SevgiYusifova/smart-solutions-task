@@ -1,0 +1,26 @@
+<h1 matDialogTitle>Create Task</h1>
+<mat-dialog-content>
+    <form class="add-task-form" [formGroup]="taskForm" (ngSubmit)="handleSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" [formControl]="title">
+            <mat-error *ngIf="title.touched && title.hasError('required')">Title is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Description" [formControl]="description">
+            <mat-error *ngIf="description.touched && description.hasError('required')">Description is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Deadline</mat-label>
+            <input matInput [matDatepicker]="deadlinePicker" [formControl]="deadline">
+            <mat-datepicker-toggle matSuffix [for]="deadlinePicker"></mat-datepicker-toggle>
+            <mat-datepicker #deadlinePicker></mat-datepicker>
+            <mat-error *ngIf="deadline.touched && deadline.hasError('required')">Deadline is required</mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button [disabled]="taskForm.invalid" mat-button color="primary" (click)="handleSubmit()">Submit</button>
+    <button mat-button color="warn" (click)="dialogRef.close()">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,75 @@
+.tasks-container {
+    display: flex;
+    justify-content: center;
+}
+
+.task-container-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-block: 12px;
+}
+
+.task-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-deadline {
+    align-self: flex-end;
+    margin-right: 15px;
+}
+
+.status {
+    &.completed:after {
+        background-color: #94e185;
+        border-color: #78d965;
+        box-shadow: 0px 0px 4px 1px #94e185;
+    }
+
+    &.in-progress:after {
+        background-color: #ffc182;
+        border-color: #ffb161;
+        box-shadow: 0px 0px 4px 1px #ffc182;
+    }
+
+    &.not-assigned:after {
+        background-color: darkgray;
+        border-color: gray;
+        box-shadow: 0px 0px 4px 1px silver;
+    }
+
+    &.closed:after {
+        background-color: #c9404d;
+        border-color: #c42c3b;
+        box-shadow: 0px 0px 4px 1px #c9404d;
+    }
+
+    &:after {
+        content: " ";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-left: 10px;
+        border: 1px solid #000;
+        border-radius: 7px;
+    }
+}
+
+.deadline {
+    &.expired {
+        color: red;
+    }
+
+    &.not-expired {
+        color: green;
+    }
+}
+
+.mat-accordion {
+    width: 60%;
+    min-width: 400px;
+}
+
+.mat-expansion-panel-header-description {
+    justify-content: end;
+}

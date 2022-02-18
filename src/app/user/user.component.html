@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <span>Smart task manager</span>
+    <span class="toolbar-actions">
+        {{username}}
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </span>
+</mat-toolbar>
+<router-outlet></router-outlet>

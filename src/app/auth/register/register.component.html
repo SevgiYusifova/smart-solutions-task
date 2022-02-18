@@ -1,0 +1,67 @@
+<mat-card>
+    <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+        <div class="card-header">
+            <h1>Register</h1>
+        </div>
+        <mat-card-content class="card-content">
+            <p class="section-name">Admin info</p>
+            <div formGroupName="user">
+                <mat-form-field appearance="outline" color="primary">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username" placeholder="Username" />
+                    <mat-error *ngIf="username.touched && username.hasError('required')">Username is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" color="primary">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Email" />
+                    <mat-error *ngIf="email.touched && email.hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="email.touched && email.hasError('email')">Email should has correct format abc@def
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" color="primary">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" placeholder="Password" />
+                    <mat-error *ngIf="password.touched && password.hasError('required')">Password is required
+                    </mat-error>
+                    <mat-error *ngIf="password.touched && password.hasError('minlength')">Password must have at least 6
+                        symbols</mat-error>
+                </mat-form-field>
+            </div>
+            <p class="section-name">Organization info</p>
+            <div formGroupName="organization">
+                <mat-form-field appearance="outline" color="primary">
+                    <mat-label>Organization name</mat-label>
+                    <input matInput formControlName="name" placeholder="Organization name" />
+                    <mat-error *ngIf="organizationName.touched && organizationName.hasError('required')">Organization name is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" color="primary">
+                    <mat-label>Organization phone</mat-label>
+                    <input matInput formControlName="phone" placeholder="Organization phone" />
+                    <mat-error *ngIf="organizationPhone.touched && organizationPhone.hasError('required')">Organization phone is required
+                    </mat-error>
+                    <mat-error *ngIf="organizationPhone.touched && organizationPhone.hasError('pattern')">Organization phone must have correct format. ex. +994 12 333 44 55 or 012 333 44 55
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" color="primary">
+                    <mat-label>Organization address</mat-label>
+                    <input matInput formControlName="address" placeholder="Organization address" />
+                    <mat-error *ngIf="organizationAddress.touched && organizationAddress.hasError('required')">Organization address is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+
+
+        <mat-card-actions align="end">
+            <button mat-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
+            <button color="primary" mat-button routerLink="../login">Go to login</button>
+        </mat-card-actions>
+    </form>
+
+</mat-card>

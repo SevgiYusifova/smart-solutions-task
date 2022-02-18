@@ -1,0 +1,29 @@
+<mat-card>
+    <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+        <div class="card-header">
+            <h1>Login</h1>
+        </div>
+        <mat-card-content class="card-content">
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" placeholder="username" />
+                <mat-error *ngIf="username.touched && username.hasError('required')">Username is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" placeholder="password" type="password" />
+                <mat-error *ngIf="password.touched && password.hasError('required')">Password is required</mat-error>
+                <mat-error *ngIf="password.touched && password.hasError('minlength')">Password must have at least 6
+                    symbols</mat-error>
+            </mat-form-field>
+            <mat-radio-group formControlName="userType" color="primary">
+                <mat-radio-button value="user">User</mat-radio-button>
+                <mat-radio-button value="admin">Admin</mat-radio-button>
+            </mat-radio-group>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button color="primary" mat-button type="submit" [disabled]="!loginForm.valid">Login</button>
+            <button color="primary" mat-button routerLink="../register">Go to register</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
